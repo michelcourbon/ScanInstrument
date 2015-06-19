@@ -30,11 +30,30 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="ouvrir descriptif"
+        android:text="ouvrir descriptif appareil"
         android:id="@+id/btn_gotoweb"
         android:layout_below="@+id/scan_content"
         android:layout_centerHorizontal="true"
         android:longClickable="false"
-        android:enabled="false" />
+        android:enabled="true"
+        android:onClick="onClick" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="liste des appareils "
+        android:id="@+id/btn_listes"
+        android:layout_marginTop="48dp"
+        android:layout_below="@+id/btn_gotoweb"
+        android:layout_centerHorizontal="true"
+        android:onClick="onClick" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView"
+        android:layout_alignTop="@+id/scan_button"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
 </RelativeLayout>

@@ -22,18 +22,23 @@ import android.net.Uri;
 //public class MainActivity extends ActionBarActivity {
 public class MainActivity extends Activity implements OnClickListener {
 
-    private Button scanBtn, webBtn;
+    private Button scanBtn, webBtnDevice, webBtnListes;
     private TextView formatTxt, contentTxt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        scanBtn = (Button)findViewById(R.id.scan_button);
+        // text for scanning
         formatTxt = (TextView)findViewById(R.id.scan_format);
         contentTxt = (TextView)findViewById(R.id.scan_content);
+         // btn event
+        scanBtn = (Button)findViewById(R.id.scan_button);
         scanBtn.setOnClickListener(this);
-        webBtn = (Button) findViewById(R.id.btn_gotoweb);
+        webBtnDevice = (Button) findViewById(R.id.btn_gotoweb);
+        scanBtn.setOnClickListener(this);
+        webBtnListes = (Button) findViewById(R.id.btn_listes);
+        webBtnListes.setOnClickListener(this);
     }
 
     @Override
@@ -45,6 +50,11 @@ public class MainActivity extends Activity implements OnClickListener {
             scanIntegrator.initiateScan();
         }
         if (v.getId()==R.id.btn_gotoweb) {
+            Uri uriUrl = Uri.parse("http://androidbook.blogspot.com/");
+            Intent launchBrowser = new Intent(Intent.ACTION_VIEW, uriUrl);
+            startActivity(launchBrowser);
+        }
+        if (v.getId()==R.id.btn_listes) {
             Uri uriUrl = Uri.parse("http://androidbook.blogspot.com/");
             Intent launchBrowser = new Intent(Intent.ACTION_VIEW, uriUrl);
             startActivity(launchBrowser);
@@ -61,7 +71,7 @@ public class MainActivity extends Activity implements OnClickListener {
             String scanFormat = scanningResult.getFormatName();
             formatTxt.setText("FORMAT: " + scanFormat);
             contentTxt.setText("CONTENT: " + scanContent);
-            webBtn.setEnabled(true);
+            //webBtn.setEnabled(true);
         }
         else{
             Toast toast = Toast.makeText(getApplicationContext(),
